@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
-import Chair from './Chair';
+import Sidebar from './Sidebar';
+import Diagram from './Diagram';
 
 function App() {
   return (
     <div className="App">
-      <Chair num="1"/>
+      <Sidebar />
+      <Diagram />
     </div>
   );
 }
