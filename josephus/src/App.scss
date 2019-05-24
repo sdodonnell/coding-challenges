@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  font-family: "Source Sans Pro"
+}
+
+#root {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  position: absolute;
+  height: 100%;
+  width: 100%
+}
+
+.chair {
+  width: 20px;
+  img {
+    width: 100%
+  }
+}
+
+.marked {
+  opacity: .4
+}
+
+// .chair > img {
+//   width: 100%
+// }
+
+.sidebar {
+  background-color: #f6f6f6;
+  padding: 20px;
+  h1 {
+    font-weight: 600;
+    font-size: 24px;
+    color: #62687c
+  };
+  p {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #62687c
+  };
+  form {
+    display: grid;
+    grid-auto-flow: row;
+  }
+}
+
+// .sidebar > h1 {
+//   font-weight: 600;
+//   font-size: 24px;
+//   color: #62687c
+// }
+
+// .sidebar > p {
+//   font-weight: 300;
+//   font-size: 16px;
+//   line-height: 1.5;
+//   color: #62687c
+// }
+
+// .sidebar > form {
+//   display: grid;
+//   grid-auto-flow: row;
+// }
+
+.diagram {
+  display: grid;
+  grid-template-columns: repeat(10, auto);
+  padding: 100px 10vw;
+}
