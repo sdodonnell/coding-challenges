@@ -1,24 +1,53 @@
 import React, { useEffect } from 'react';
 import Chair from './Chair';
 
-const Diagram = ({ chairs, ms, isRunning }) => {
+const Diagram = ({ 
+  numChairs, 
+  ms, 
+  isRunning, 
+  nextChair, 
+  setNextChair, 
+  currChair, 
+  setCurrChair,
+  step,
+  setStep
+}) => {
 
-  const renderChairs = () => {
-    return Array.from(Array(+chairs)).map((el, i) => {
-      return <Chair key={i + 1} num={i + 1} marked="false"/>
+  const renderChairs = num => {
+    return Array.from(Array(num)).map((el, i) => {
+      return <Chair key={i + 1} num={i + 1}/>
     })
   }
-  
-  const runSimulation = () => {
-    let chairs = document.getElementsByClassName("chair");
-    let markedChairs = document.getElementsByClassName("marked");
+
+  const singleStep = () => {
+    /* Takes one step through the chairs, using a DOM query to get 
+    the chairs that are still in play and changing their class to show
+    that they are out of play.
+    */
+    let unmarkedChairs = document.getElementsByClassName("unmarked");
+    let nextOutChair = (currChair + step) % unmarkedChairs.length;
+    unmarkedChairs[nextOutChair].className = "chair marked";
+    setCurrChair(nextOutChair);
   }
 
-  useEffect(() => isRunning ? runSimulation : null)
+  useEffect(() => {
+    if (nextChair) {
+      singleStep();
+      setNextChair(false);
+      setStep(step + 1)
+    } 
+
+    /*
+    Handle runSimulation() function here. Include effect hook to respond
+    to isRunning prop. runSimulation() should call singleStep() using setTimeout()
+    or setInterval(), passing in the ms prop, to call singleStep() until all but one chair
+    component has been transformed.
+    */
+  })
 
   return (
     <div className="diagram">
-      {renderChairs()}
+      {renderChairs(+numChairs)}
     </div>
   )
 }

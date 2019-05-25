@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  font-family: "Source Sans Pro"
+  font-family: "Source Sans Pro";
+  font-size: 16px
 }
 
 #root {
@@ -11,24 +12,9 @@ body {
   width: 100%
 }
 
-.chair {
-  width: 20px;
-  img {
-    width: 100%
-  }
-}
-
-.marked {
-  opacity: .4
-}
-
-// .chair > img {
-//   width: 100%
-// }
-
 .sidebar {
   background-color: #f6f6f6;
-  padding: 20px;
+  padding: 100px 15%;
   h1 {
     font-weight: 600;
     font-size: 24px;
@@ -38,34 +24,104 @@ body {
     font-weight: 300;
     font-size: 16px;
     line-height: 1.5;
-    color: #62687c
+    color: #62687c;
+    margin: 0
   };
   form {
     display: grid;
     grid-auto-flow: row;
+    grid-gap: 1rem;
+    margin: 10px 0;
+  };
+  input {
+    color: #4a4a4a;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 300;
+    padding-left: 10px;
+  };
+  button {
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+  };
+  button:hover {
+    cursor: pointer
   }
 }
 
-// .sidebar > h1 {
-//   font-weight: 600;
-//   font-size: 24px;
-//   color: #62687c
-// }
+.chairs-input {
+  border: 1px solid #c4cdd5;
+  border-radius: 3px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  overflow: hidden;
+  p {
+    background-image: linear-gradient(#ffffff, #f9fafb);
+    padding: 5px 10px;
+  };
+  input {
+    border-right: 1px solid #c4cdd5;
+  }
+}
 
-// .sidebar > p {
-//   font-weight: 300;
-//   font-size: 16px;
-//   line-height: 1.5;
-//   color: #62687c
-// }
+.ms-input {
+  border: 1px solid #c4cdd5;
+  border-radius: 3px;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  overflow: hidden;
+  p {
+    background-image: linear-gradient(#ffffff, #f9fafb);
+    padding: 5px 10px;
+    text-align: center
+  };
+  input {
+    min-width: 20px;
+    height: 100%;
+    border-right: 1px solid #c4cdd5;
+    border-left: 1px solid #c4cdd5
+  };
+  button {
+    border: none;
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
 
-// .sidebar > form {
-//   display: grid;
-//   grid-auto-flow: row;
-// }
+.step-btn {
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  background-color:#12b9ef;
+  color: #ffffff
+}
+
+.reset-btn {
+  border: none;
+  padding: 10px;
+  background: transparent;
+  color: #12b9ef
+}
 
 .diagram {
   display: grid;
   grid-template-columns: repeat(10, auto);
   padding: 100px 10vw;
+  .chair {
+    width: 20px;
+    img {
+      width: 100%
+    }
+  };
+  .marked {
+    width: 20px;
+    opacity: .4;
+    img {
+      width: 100%
+    }
+  }
 }
