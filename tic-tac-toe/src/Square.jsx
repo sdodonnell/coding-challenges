@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Square = props => {
-  return (
-    <div className="square" onClick={e => props.handleClick(props.pos)}>
 
+  const [mark, setMark] = useState(null);
+
+  const handleClick = () => {
+    if (mark) return;
+    setMark(props.currPlayer);
+    props.handleClick(props.pos);
+  }
+
+  return (
+    <div className="square" onClick={() => handleClick()}>
+      <p>{mark ? mark : null}</p>
     </div>
   )
 }

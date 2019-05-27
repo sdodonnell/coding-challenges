@@ -16,4 +16,17 @@ body {
 
 .square {
   background-color: black;
+  color: white;
+  position: relative;
+}
+
+.square p {
+  position: absolute;
+  bottom: 54px;
+  margin: 0;
+  width: 156px;
+  height: 156px;
+  font-size: 200px;
+  text-align: center;
+  font-family: sans-serif;
 }
