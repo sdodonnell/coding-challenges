@@ -65,6 +65,16 @@ const Board = ({size, won, setWon}) => {
     return false
   }
 
+  const isFull = () => {
+    for (let row of grid) {
+      if (row.some(el => el === null)) {
+        return false
+      }
+    }
+    
+    return true
+  }
+
   // Populates the board with Square components.
   const populateBoard = () => {
     let squares = [];
@@ -94,6 +104,8 @@ const Board = ({size, won, setWon}) => {
       setWon('X')
     } else if (winner('o')) {
       setWon('O')
+    } else if (isFull()) {
+      setWon('draw')
     };
 
     currPlayer === "x" ? setCurrPlayer("o") : setCurrPlayer("x");

@@ -26,14 +26,15 @@ function App() {
         won={won}
         setWon={setWon}/>
       
-      <div className="winner">
-        {won ? `${won} wins!` : null}
-      </div>
       
       <form className="board-input">
         <input type="number" min="3" value={size} onChange={e => setSize(+e.target.value)}/>
         <button onClick={handleReset}>Reset</button>
       </form>
+      <div className="winner">
+        {won === 'draw' ? "It's a draw!" :
+            won ? `${won} wins!` : null}
+      </div>
     </div>
   );
 }
