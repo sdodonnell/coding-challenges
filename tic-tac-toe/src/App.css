@@ -5,12 +5,42 @@ body {
   margin: 0;
 }
 
+.App {
+  width: 100%;
+}
+
+.board-input {
+  width: 250px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 2rem;
+  align-items: center
+}
+
+.board-input input, .board-input button {
+  height: 40px;
+  font-size: 25px;
+  border-radius: 3px;
+  border: 1px solid gray;
+  outline: none;
+}
+
+.board-input input:hover, .board-input button:hover {
+  cursor: pointer
+}
+
+.board-input input {
+  padding-left: 15px;
+  min-width: 0;
+}
+
+
 .board {
   height: 500px;
   width: 500px;
   margin: 100px auto;
   display: grid;
-  grid-template-columns: repeat(3, auto);
   grid-gap: 1rem;
 }
 
