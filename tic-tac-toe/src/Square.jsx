@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import {ReactComponent as Circle} from './icons/circle.svg';
+import {ReactComponent as XMark} from './icons/x.svg';
 
 const Square = props => {
 
@@ -12,7 +14,9 @@ const Square = props => {
 
   return (
     <div className="square" onClick={() => handleClick()}>
-      <p>{mark ? mark : null}</p>
+      {mark ? 
+            mark === "x" ? <XMark /> : <Circle />
+            : null}
     </div>
   )
 }

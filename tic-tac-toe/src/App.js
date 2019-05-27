@@ -15,6 +15,8 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Tic-Tac-Toe</h1>
+      <p>Use the input below to change the size of the board. Click "Reset" to start a new game with a 3x3 board.</p>
       <Board key={reset} size={size} />
       <form className="board-input">
         <input type="number" min="3" value={size} onChange={e => setSize(e.target.value)}/>

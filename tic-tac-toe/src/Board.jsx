@@ -85,8 +85,10 @@ const Board = ({size}) => {
   }
 
   return (
-    <div className="board" style={{gridTemplateColumns: `repeat(${size}, auto)`}}>
-      {populateBoard()}
+    <div className="board">
+      <div className="board-interior" style={{gridTemplateColumns: `repeat(${size}, auto)`}}>
+        {populateBoard()}
+      </div>
     </div>
   )
 }
