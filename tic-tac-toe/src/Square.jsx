@@ -14,9 +14,11 @@ const Square = props => {
 
   return (
     <div className="square" onClick={() => handleClick()}>
-      {mark ? 
+      {
+        mark ? 
             mark === "x" ? <XMark /> : <Circle />
-            : null}
+            : null
+      }
     </div>
   )
 }

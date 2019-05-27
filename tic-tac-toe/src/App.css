@@ -3,6 +3,7 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
+  font-family: 'Open Sans'
 }
 
 .App {
@@ -10,10 +11,10 @@ body {
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-auto-rows: 1fr 1fr 3fr 2fr;
+  grid-auto-rows: 1fr 1fr 4fr 1fr 2fr;
   text-align: center;
-  font-family: sans-serif;
-  padding: 50px 50px 0 50px;
+  padding: 25px 50px;
+  background-color: rgb(218, 218, 218)
 }
 
 .board-input {
@@ -31,6 +32,7 @@ body {
   border-radius: 3px;
   border: 1px solid gray;
   outline: none;
+  font-family: inherit
 }
 
 .board-input input:hover, .board-input button:hover {
@@ -64,13 +66,24 @@ body {
   grid-gap: 1rem;
 }
 
+.winner {
+  font-size: 24px;
+  align-self: center
+}
+
 .square {
-  background-color: black;
+  background-color: rgb(141, 141, 141);
+  border: 3px solid rgb(70, 70, 70);
+  border-radius: 5px;
   color: white;
   position: relative;
   display: grid;
   justify-items: center;
   align-items: center
+}
+
+.square:hover {
+  cursor: pointer
 }
 
 .square svg {

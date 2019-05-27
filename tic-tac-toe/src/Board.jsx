@@ -1,8 +1,9 @@
 import React, { useState, useLayoutEffect } from 'react';
 import Square from './Square';
 
-const Board = ({size}) => {
+const Board = ({size, won, setWon}) => {
 
+  // Helper function to create a blank NxN grid, dependent on the size prop.
   const createGrid = () => {
     let grid = Array(size);
     for (let i = 0; i < size; i++) {
@@ -11,14 +12,16 @@ const Board = ({size}) => {
     return grid;
   }
 
+  // Hooks
   const [currPlayer, setCurrPlayer] = useState("x");
   const [grid, setGrid] = useState(createGrid());
-  const [won, setWon] = useState(false);
 
+  // Update the grid when the size prop changes.
   useLayoutEffect(() => {
     setGrid(createGrid());
   }, [size])
 
+  // Determines if the player passed in has won.
   const winner = mark => {
 
     // Row win
@@ -62,25 +65,37 @@ const Board = ({size}) => {
     return false
   }
 
+  // Populates the board with Square components.
   const populateBoard = () => {
     let squares = [];
     for (let row in grid) {
       for (let col in grid) {
-        squares.push(<Square pos={[row, col]} currPlayer={currPlayer} handleClick={handleClick}/>)
+        squares.push(
+          <Square 
+            key={squares.length}
+            pos={[row, col]} 
+            currPlayer={currPlayer} 
+            handleClick={handleClick}/>
+        )
       }
     }
     return squares;
   }
 
+  // Upon clicking a square, this updates the stored grid, checks if either player has won, and switches the current player.
   const handleClick = pos => {
     if (won) return;
     let [x, y] = [pos[0], pos[1]];
     let updatedGrid = grid;
     updatedGrid[x][y] = currPlayer;
     setGrid(updatedGrid);
-    if (winner('x') || winner('o')) {
-      setWon(true)
-    }
+
+    if (winner('x')) {
+      setWon('X')
+    } else if (winner('o')) {
+      setWon('O')
+    };
+
     currPlayer === "x" ? setCurrPlayer("o") : setCurrPlayer("x");
   }
 

@@ -6,10 +6,12 @@ function App() {
 
   const [size, setSize] = useState(3);
   const [reset, setReset] = useState(0);
+  const [won, setWon] = useState(false);
 
   const handleReset = e => {
     e.preventDefault(); 
     setSize(3);
+    setWon(false);
     setReset(Math.random());
   }
 
@@ -17,9 +19,19 @@ function App() {
     <div className="App">
       <h1>Tic-Tac-Toe</h1>
       <p>Use the input below to change the size of the board. Click "Reset" to start a new game with a 3x3 board.</p>
-      <Board key={reset} size={size} />
+      
+      <Board 
+        key={reset} 
+        size={size} 
+        won={won}
+        setWon={setWon}/>
+      
+      <div className="winner">
+        {won ? `${won} wins!` : null}
+      </div>
+      
       <form className="board-input">
-        <input type="number" min="3" value={size} onChange={e => setSize(e.target.value)}/>
+        <input type="number" min="3" value={size} onChange={e => setSize(+e.target.value)}/>
         <button onClick={handleReset}>Reset</button>
       </form>
     </div>
