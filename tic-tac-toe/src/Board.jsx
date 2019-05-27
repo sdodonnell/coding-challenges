@@ -32,7 +32,7 @@ const Board = ({size, won, setWon}) => {
       }
     }
 
-    // Col win
+    // Column win
     for (let i = 0; i < size; i++) {
       let col = [];
       for (let j = 0; j < size; j++) {
