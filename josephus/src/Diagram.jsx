@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Chair from './Chair';
 
 const Diagram = ({ 
   numChairs, 
   ms, 
-  isRunning, 
+  isRunning,
+  setIsRunning, 
   nextChair, 
   setNextChair, 
   currChair, 
@@ -13,13 +14,15 @@ const Diagram = ({
   setStep
 }) => {
 
+  const [unmarked, setUnmarked] = useState(numChairs)
+
   const renderChairs = num => {
     return Array.from(Array(num)).map((el, i) => {
       return <Chair key={i + 1} num={i + 1}/>
     })
   }
 
-  const singleStep = () => {
+  const singleStep = async () => {
     /* Takes one step through the chairs, using a DOM query to get 
     the chairs that are still in play and changing their class to show
     that they are out of play.
@@ -27,23 +30,40 @@ const Diagram = ({
     let unmarkedChairs = document.getElementsByClassName("unmarked");
     let nextOutChair = (currChair + step) % unmarkedChairs.length;
     unmarkedChairs[nextOutChair].className = "chair marked";
-    setCurrChair(nextOutChair);
+    await setCurrChair(nextOutChair);
   }
 
   useEffect(() => {
     if (nextChair) {
       singleStep();
       setNextChair(false);
-      setStep(step + 1)
+      setStep(step => step + 1);
+      setUnmarked(unmarked => unmarked - 1);
     } 
+  }, [nextChair])
 
-    /*
-    Handle runSimulation() function here. Include effect hook to respond
-    to isRunning prop. runSimulation() should call singleStep() using setTimeout()
-    or setInterval(), passing in the ms prop, to call singleStep() until all but one chair
-    component has been transformed.
-    */
-  })
+  useEffect(() => {
+    console.log(unmarked)
+    if (!isRunning) {
+      return;
+    }
+
+    if (isRunning && unmarked > 1) {
+      var timer = setTimeout(() => {
+          singleStep();
+          setStep(step => step + 1)
+          setUnmarked(unmarked => unmarked - 1);
+        }, ms);
+    } else if (unmarked === 1) {
+      setIsRunning(false)
+    }
+    
+    return () => clearTimeout(timer);
+  }, [isRunning, unmarked])
+
+  useEffect(() => {
+    setUnmarked(numChairs)
+  }, [numChairs])
 
   return (
     <div className="diagram">
