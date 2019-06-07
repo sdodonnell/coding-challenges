@@ -49,7 +49,7 @@ const App = () => {
     setMs(200);
     setCurrChair(0);
     Array
-      .from(document.getElementsByClassName("marked"))
+      .from(document.getElementsByClassName("chair"))
       .forEach(el => el.className = "chair unmarked");
   }
 

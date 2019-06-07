@@ -114,7 +114,6 @@ body {
   font-size: 10px;
   .chair {
     width: 10px;
-    // padding: 0 2px;
     left: 50%;
     top: 50%;
     position: absolute; 
@@ -129,24 +128,9 @@ body {
   };
   .marked {
     opacity: .4;
+  };
+  .final p {
+    color: red;
+    font-weight: bold
   }
 }
-
-// .diagram {
-//   height: 400px;
-//   width: 400px;
-//   border-radius: 50%;
-//   position: relative;
-// }
-
-// .chair {
-//   list-style: none;
-//   height: 10px;
-//   width: 10px;
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   img {
-//     width: 100%;
-//   }
-// }

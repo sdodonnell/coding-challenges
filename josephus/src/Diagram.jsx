@@ -14,7 +14,7 @@ const Diagram = ({
   setStep
 }) => {
 
-  const [unmarked, setUnmarked] = useState(numChairs)
+  const [unmarked, setUnmarked] = useState(numChairs);
 
   const renderChairs = num => {
     // jQuery equivalent = $(listItems[i]).css("transform", "rotate(" + rotateAngle + "deg) translate(0, -200px) rotate(-" + rotateAngle + "deg)")
@@ -56,7 +56,7 @@ const Diagram = ({
         }, ms);
     } else if (unmarked === 1) {
       let finalChair = document.getElementsByClassName('unmarked')[0];
-      lastChair.className = "chair final";
+      finalChair.className = "chair final";
       setIsRunning(false)
     }
     
