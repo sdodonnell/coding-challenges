@@ -17,8 +17,11 @@ const Diagram = ({
   const [unmarked, setUnmarked] = useState(numChairs)
 
   const renderChairs = num => {
+    // jQuery equivalent = $(listItems[i]).css("transform", "rotate(" + rotateAngle + "deg) translate(0, -200px) rotate(-" + rotateAngle + "deg)")
+    const offsetAngle = 360 / num;
     return Array.from(Array(num)).map((el, i) => {
-      return <Chair key={i + 1} num={i + 1}/>
+      const rotateAngle = offsetAngle * i;
+      return <Chair key={i + 1} num={i + 1} angle={rotateAngle}/>
     })
   }
 
@@ -43,18 +46,17 @@ const Diagram = ({
   }, [nextChair])
 
   useEffect(() => {
-    console.log(unmarked)
     if (!isRunning) {
       return;
-    }
-
-    if (isRunning && unmarked > 1) {
+    } else if (isRunning && unmarked > 1) {
       var timer = setTimeout(() => {
           singleStep();
           setStep(step => step + 1)
           setUnmarked(unmarked => unmarked - 1);
         }, ms);
     } else if (unmarked === 1) {
+      let finalChair = document.getElementsByClassName('unmarked')[0];
+      lastChair.className = "chair final";
       setIsRunning(false)
     }
     
