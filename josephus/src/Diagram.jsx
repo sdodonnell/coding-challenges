@@ -17,7 +17,6 @@ const Diagram = ({
   const [unmarked, setUnmarked] = useState(numChairs);
 
   const renderChairs = num => {
-    // jQuery equivalent = $(listItems[i]).css("transform", "rotate(" + rotateAngle + "deg) translate(0, -200px) rotate(-" + rotateAngle + "deg)")
     const offsetAngle = 360 / num;
     return Array.from(Array(num)).map((el, i) => {
       const rotateAngle = offsetAngle * i;
